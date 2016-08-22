@@ -21,15 +21,17 @@
         var payload = token.split('.')[1];
         payload = $window.atob(payload);
         payload = JSON.parse(payload);
-        console.log('Payload:', payload);
         return {
-          email: payload.email
+          email: payload.email,
+          id: payload._id,
+          firstName: payload.firstName,
+          lastName: payload.lastName
         }
       }
     }
     function saveToken(token){
       $window.localStorage['mean-token'] = token;
-      console.log($window.localStorage);
+      // console.log($window.localStorage);
     }
     function getToken(){
       return $window.localStorage['mean-token'];
@@ -42,21 +44,24 @@
         payload = $window.atob(payload);
         payload = JSON.parse(payload);
 
-        return payload.expiration > new Date() / 1000;
+        return payload.exp > new Date().getDate();
       } else {
         return false;
       }
     }
+
     function login(user){
       return $http.post(loginUrl, user)
                   .then(function(response){
                     saveToken(response.data.token);
+                    return response.data;
                   })
                   .catch(function(err){
                     console.log(err);
                   });
     }
     function logout(){
+
       $window.localStorage.removeItem('mean-token');
     }
   }
