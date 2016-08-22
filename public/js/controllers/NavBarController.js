@@ -8,12 +8,12 @@
   /**
    * NavBarController - description
    *
-   * @param  {type} $scope      Angular service that exposes functions and data
+   * @param  {object} $scope      Angular service that exposes functions and data
    *                              to the DOM
    * @param  {object} AuthService Our custom written AuthService that allows for
    *                            Authentication and persistence of a user
    * @param  {object} $location   Angular service that will allow the redirect to a url
-   * @return {type}             description
+   * @return {none}             none
    */
   function NavBarController($scope, AuthService, $location){
     $scope.isLoggedIn = AuthService.isLoggedIn; //exposes the isLoggedIn function
