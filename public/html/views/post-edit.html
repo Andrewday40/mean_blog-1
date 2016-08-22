@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
-    <h1 contenteditable>Title:</h1>
     <div class="form-group">
-      <textarea cols="30" rows="10" class='form-control'></textarea>
+      <input type='text' ng-model='editPost.title' style='font-size: 2.1em; line-height: 3em;' class='form-control'/>
     </div>
-    <button class="btn btn-default btn-block">Update</button>
+    <div class="form-group">
+      <textarea cols="30" rows="10" class='form-control' ng-model='editPost.body'></textarea>
+    </div>
+    <button class="btn btn-default btn-block" ng-click='updatePost(editPost)'>Update</button>
   </div>
 </div>
