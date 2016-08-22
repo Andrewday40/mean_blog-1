@@ -13,9 +13,18 @@
       createPost: createPost,
       getOnePost: getOnePost,
       updatePost: updatePost,
-      deletePost: deletePost
+      deletePost: deletePost,
+      getRandom: getRandom,
+      getRecent: getRecent
     };
+    return service;
 
+    function getRandom(number){
+      return $http.get(baseUrl+'random/'+number);
+    }
+    function getRecent(number){
+      return $http.get(baseUrl+'recent/'+number);
+    }
     function getAllPosts(){
       return $http.get(baseUrl);
     }
@@ -31,7 +40,6 @@
     function deletePost(postId){
       return $http.delete(baseUrl + postId);
     }
-    return service;
   }
 
 
