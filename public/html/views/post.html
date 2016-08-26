@@ -1,8 +1,13 @@
-<div>
-  <div class="well row" style='background-color: lightblue;'>
-    <img src="http://placehold.it/200x200" alt="" class='col-md-2' >
-    <p class='col-md-10'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint porro molestias, fugit commodi vero, nulla doloremque sequi nam aspernatur suscipit nihil libero omnis a ducimus quo. Velit, inventore eius molestiae!</p>
-  </div>
+<div class="row">
+  <img src="http://placehold.it/500x200" alt="" class='col-md-6 col-md-offset-3' >
 </div>
+<h2><em>{{readPost.title}}</em></h2>
+<div class="row">
+  <p class='col-md-10 col-md-offset-1'>{{readPost.body}}</p>
+</div>
+<div class="row">
+  <h4 class="pull-right">By: {{getAuthor(readPost)}}</h4>
+</div>
+
 <hr>
 <h2>Comments:</h2>

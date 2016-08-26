@@ -3,17 +3,23 @@
     <img src="http://placehold.it/250x250" alt=""  style='border-radius:100%;'/>
   </div>
   <div class="col-md-8">
-    <h3>Name:</h3>
-    <h5>Age:</h5>
+    <h3>Name: {{user.firstName}} {{user.lastName}}</h3>
+    <h5>Email: {{user.email}}</h5>
+
   </div>
 </div>
 <hr>
 <div class="row">
   <h2>Posts:</h2>
-  <div>
+  <div ng-repeat='post in posts track by $index'>
     <div class="well row" style='background-color: lightblue;'>
+      <button class="btn btn-sm btn-danger pull-right" ng-click="deletePost(post, $index)">&times;</button>
       <img src="http://placehold.it/200x200" alt="" class='col-md-2' >
-      <p class='col-md-10'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint porro molestias, fugit commodi vero, nulla doloremque sequi nam aspernatur suscipit nihil libero omnis a ducimus quo. Velit, inventore eius molestiae!</p>
+      <!-- <p class='col-md-9'>{{post.body}}</p> -->
+      <h2>{{post.title}}</h2>
+      <h3>By: {{user.firstName}} {{user.lastName}}</h3>
+      <p><em>{{post.body | limitTo:100 }}</em></p>
+      <a href="#/edit/{{post._id}}" class='btn btn-default pull-right'>Edit</a>
     </div>
   </div>
 </div>

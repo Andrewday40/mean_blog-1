@@ -2,6 +2,7 @@
   angular.module('ngBlog')
          .factory('AuthService', AuthService);
 
+
   AuthService.$inject = ['$http', '$window'];
 
   function AuthService($http, $window){
@@ -19,12 +20,14 @@
     function currentUser(){
       if(isLoggedIn()){
         var token = getToken();
-        var payload =token.split('.')[1];
+        var payload = token.split('.')[1];
         payload = $window.atob(payload);
         payload = JSON.parse(payload);
-        console.log('payload', payload);
         return {
-          email: payload.email
+          email: payload.email,
+          id: payload._id,
+          firstName: payload.firstName,
+          lastName: payload.lastName
         };
       }
     }
@@ -42,15 +45,17 @@
         payload = $window.atob(payload);
         payload = JSON.parse(payload);
 
-        return payload.expiration > new Date() / 1000;
+        return payload.exp > new Date().getDate();
       } else {
         return false;
       }
     }
+
     function login(user){
       return $http.post(loginUrl, user)
                   .then(function(response){
                     saveToken(response.data.token);
+                    return response.data;
                   })
                   .catch(function(err){
                     console.log(err);

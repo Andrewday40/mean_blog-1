@@ -1,10 +1,11 @@
 <div class="jumbotron">
-  <h1>HEADER</h1>
+  <h1>MEAN Blog</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 </div>
-  <div>
+  <div ng-repeat='post in posts'>
     <div class="well row" style='background-color: lightblue;'>
       <img src="http://placehold.it/200x200" alt="" class='col-md-2' >
-      <p class='col-md-10'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint porro molestias, fugit commodi vero, nulla doloremque sequi nam aspernatur suscipit nihil libero omnis a ducimus quo. Velit, inventore eius molestiae!</p>
+      <p class='col-md-10'>{{post.body | limitTo:100}}</p>
+      <a href="#/post/{{post._id}}"><small>Read</small></a>
     </div>
   </div>
