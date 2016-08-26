@@ -2,9 +2,9 @@
   angular.module('ngBlog')
       .controller('SignupController', SignupController);
 
-  SignupController.$inject = ['$scope', 'UserService'];
+  SignupController.$inject = ['$scope', 'UserService', 'AuthService'];
 
-  function SignupController($scope, UserService){
+  function SignupController($scope, UserService, AuthService){
     $scope.signUp = signUp;
 
 
@@ -18,6 +18,7 @@
         UserService.signUp(user)
                    .then(function(response){
                      console.log(response);
+                     AuthService.saveToken(response.data.token);
                    })
                    .catch(function(err){
                      console.log(err);
